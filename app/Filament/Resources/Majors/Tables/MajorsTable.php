@@ -1,0 +1,59 @@
+<?php
+
+namespace App\Filament\Resources\Majors\Tables;
+
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+
+class MajorsTable
+{
+    public static function configure(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('no')
+                    ->label('No')
+                    ->rowIndex(),
+                TextColumn::make('name')
+                    ->label('Nama')
+                    ->searchable(),
+                TextColumn::make('code')
+                    ->label('Kode')
+                    ->searchable(),
+                TextColumn::make('short_name')
+                    ->label('Singkatan')
+                    ->searchable(),
+                TextColumn::make('department_group')
+                    ->label('Kelompok')
+                    ->searchable(),
+                IconColumn::make('is_active')
+                    ->label('Aktif')
+                    ->boolean(),
+                TextColumn::make('created_at')
+                    ->label('Dibuat')
+                    ->dateTime('d M Y H:i')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')
+                    ->label('Diperbarui')
+                    ->dateTime('d M Y H:i')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+            ])
+            ->filters([
+                //
+            ])
+            ->recordActions([
+                EditAction::make(),
+            ])
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+}

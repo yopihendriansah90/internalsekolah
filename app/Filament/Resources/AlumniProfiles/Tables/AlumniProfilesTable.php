@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Filament\Resources\AlumniProfiles\Tables;
+
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+
+class AlumniProfilesTable
+{
+    public static function configure(Table $table): Table
+    {
+        return $table
+            ->columns([
+                TextColumn::make('no')
+                    ->label('No')
+                    ->rowIndex(),
+                TextColumn::make('studentProfile.full_name')
+                    ->label('Nama Alumni')
+                    ->searchable(),
+                TextColumn::make('graduation_year')
+                    ->label('Tahun Lulus')
+                    ->numeric(),
+                TextColumn::make('certificate_number')
+                    ->label('Nomor Ijazah')
+                    ->searchable(),
+                TextColumn::make('destination_after_graduation')
+                    ->label('Tujuan Lanjut')
+                    ->searchable(),
+            ])
+            ->recordActions([
+                EditAction::make(),
+            ])
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+}
