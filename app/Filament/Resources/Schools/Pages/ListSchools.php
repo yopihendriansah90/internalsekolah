@@ -3,17 +3,24 @@
 namespace App\Filament\Resources\Schools\Pages;
 
 use App\Filament\Resources\Schools\SchoolResource;
-use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListSchools extends ListRecords
 {
     protected static string $resource = SchoolResource::class;
 
-    protected function getHeaderActions(): array
+    public function mount(): void
     {
-        return [
-            CreateAction::make(),
-        ];
+        parent::mount();
+
+        $record = SchoolResource::getSingletonRecord();
+
+        if ($record) {
+            $this->redirect(SchoolResource::getUrl('edit', ['record' => $record]));
+
+            return;
+        }
+
+        $this->redirect(SchoolResource::getUrl('create'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\StudentClassHistories\Schemas;
 
+use App\Support\Filament\AdminSection;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -13,51 +14,62 @@ class StudentClassHistoryForm
     {
         return $schema
             ->components([
-                Select::make('student_profile_id')
-                    ->label('Siswa')
-                    ->relationship('studentProfile', 'full_name')
-                    ->required()
-                    ->searchable()
-                    ->preload(),
-                Select::make('classroom_id')
-                    ->label('Kelas / Rombel')
-                    ->relationship('classroom', 'name')
-                    ->required()
-                    ->searchable()
-                    ->preload(),
-                Select::make('academic_year_id')
-                    ->label('Tahun Ajaran')
-                    ->relationship('academicYear', 'name')
-                    ->required()
-                    ->searchable()
-                    ->preload(),
-                Select::make('semester_id')
-                    ->label('Semester')
-                    ->relationship('semester', 'name')
-                    ->searchable()
-                    ->preload(),
-                DatePicker::make('start_date')
-                    ->label('Tanggal Mulai')
-                    ->native(false),
-                DatePicker::make('end_date')
-                    ->label('Tanggal Selesai')
-                    ->native(false),
-                Select::make('status')
-                    ->label('Status')
-                    ->options([
-                        'aktif' => 'Aktif',
-                        'naik_kelas' => 'Naik Kelas',
-                        'pindah' => 'Pindah',
-                        'lulus' => 'Lulus',
+                AdminSection::make('Penempatan Siswa')
+                    ->description('Catat hubungan siswa dengan kelas, tahun ajaran, dan semester secara akurat.')
+                    ->icon('heroicon-o-arrow-path')
+                    ->schema([
+                        Select::make('student_profile_id')
+                            ->label('Siswa')
+                            ->relationship('studentProfile', 'full_name')
+                            ->required()
+                            ->searchable()
+                            ->preload(),
+                        Select::make('classroom_id')
+                            ->label('Kelas / Rombel')
+                            ->relationship('classroom', 'name')
+                            ->required()
+                            ->searchable()
+                            ->preload(),
+                        Select::make('academic_year_id')
+                            ->label('Tahun Ajaran')
+                            ->relationship('academicYear', 'name')
+                            ->required()
+                            ->searchable()
+                            ->preload(),
+                        Select::make('semester_id')
+                            ->label('Semester')
+                            ->relationship('semester', 'name')
+                            ->searchable()
+                            ->preload(),
                     ])
-                    ->native(false)
-                    ->default('aktif')
-                    ->required(),
-                Textarea::make('notes')
-                    ->label('Catatan')
-                    ->rows(3)
-                    ->columnSpanFull(),
-            ])
-            ->columns(2);
+                    ->columns(2),
+                AdminSection::make('Periode dan Status')
+                    ->description('Kelola masa berlaku riwayat kelas dan perubahan status siswa.')
+                    ->icon('heroicon-o-clock')
+                    ->schema([
+                        DatePicker::make('start_date')
+                            ->label('Tanggal Mulai')
+                            ->native(false),
+                        DatePicker::make('end_date')
+                            ->label('Tanggal Selesai')
+                            ->native(false),
+                        Select::make('status')
+                            ->label('Status')
+                            ->options([
+                                'aktif' => 'Aktif',
+                                'naik_kelas' => 'Naik Kelas',
+                                'pindah' => 'Pindah',
+                                'lulus' => 'Lulus',
+                            ])
+                            ->native(false)
+                            ->default('aktif')
+                            ->required(),
+                        Textarea::make('notes')
+                            ->label('Catatan')
+                            ->rows(3)
+                            ->columnSpanFull(),
+                    ])
+                    ->columns(2),
+            ]);
     }
 }

@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Enums\SchoolTypeEnum;
 use App\Enums\SubjectGroupEnum;
-use App\Enums\SystemSettingKeyEnum;
 use App\Models\AcademicYear;
 use App\Models\AdditionalAssignment;
 use App\Models\AlumniProfile;
@@ -18,7 +17,6 @@ use App\Models\StudentClassHistory;
 use App\Models\StudentProfile;
 use App\Models\Subject;
 use App\Models\SubjectTeacher;
-use App\Models\SystemSetting;
 use App\Models\TeacherPosition;
 use App\Models\TeacherProfile;
 use App\Models\TeachingAssignment;
@@ -50,9 +48,6 @@ class DummyDataSeeder extends Seeder
                 'principal_nip' => '197812312005011001',
             ],
         );
-
-        SystemSetting::putValue(SystemSettingKeyEnum::ActiveSchoolId, $school->id, 'integer');
-        SystemSetting::putValue(SystemSettingKeyEnum::AppInitialized, true, 'boolean');
 
         $this->seedAcademicYears();
         $majors = $this->seedMajors();

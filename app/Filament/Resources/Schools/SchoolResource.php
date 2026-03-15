@@ -55,4 +55,25 @@ class SchoolResource extends Resource
             'edit' => EditSchool::route('/{record}/edit'),
         ];
     }
+
+    public static function getSingletonRecord(): ?School
+    {
+        return static::getModel()::query()->first();
+    }
+
+    public static function getNavigationUrl(): string
+    {
+        $record = static::getSingletonRecord();
+
+        if ($record) {
+            return static::getUrl('edit', ['record' => $record]);
+        }
+
+        return static::getUrl('create');
+    }
+
+    public static function canCreate(): bool
+    {
+        return static::getSingletonRecord() === null;
+    }
 }

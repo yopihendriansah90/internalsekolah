@@ -6,13 +6,14 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use App\Support\Filament\AdminTable;
 use Filament\Tables\Table;
 
 class TeachingAssignmentsTable
 {
     public static function configure(Table $table): Table
     {
-        return $table
+        return AdminTable::configure($table)
             ->columns([
                 TextColumn::make('no')
                     ->label('No')

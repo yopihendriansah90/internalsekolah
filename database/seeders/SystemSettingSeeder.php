@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Enums\SystemSettingKeyEnum;
 use App\Models\SystemSetting;
 use Illuminate\Database\Seeder;
 
@@ -13,9 +12,7 @@ class SystemSettingSeeder extends Seeder
      */
     public function run(): void
     {
-        SystemSetting::putValue(SystemSettingKeyEnum::AppInitialized, false, 'boolean');
-        SystemSetting::putValue(SystemSettingKeyEnum::DefaultLocale, 'id', 'string', true);
-        SystemSetting::putValue(SystemSettingKeyEnum::AllowSchoolTypeChange, true, 'boolean');
-        SystemSetting::putValue(SystemSettingKeyEnum::AcademicLabelOverrides, [], 'json');
+        SystemSetting::putValue('default_locale', 'id', 'string', true);
+        SystemSetting::putValue('academic_label_overrides', [], 'json');
     }
 }

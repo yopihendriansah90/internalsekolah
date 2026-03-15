@@ -2,9 +2,7 @@
 
 namespace App\Services\School;
 
-use App\Enums\SystemSettingKeyEnum;
 use App\Models\School;
-use App\Models\SystemSetting;
 
 class SchoolContextService
 {
@@ -16,16 +14,10 @@ class SchoolContextService
             return $this->cachedSchool;
         }
 
-        $schoolId = SystemSetting::getValue(SystemSettingKeyEnum::ActiveSchoolId);
-
-        if (! is_numeric($schoolId)) {
-            return null;
-        }
-
-        return $this->cachedSchool = School::query()->find((int) $schoolId);
+        return $this->cachedSchool = School::query()->first();
     }
 
-    public function hasActiveSchool(): bool
+    public function hasSchool(): bool
     {
         return $this->current() instanceof School;
     }
@@ -37,6 +29,6 @@ class SchoolContextService
 
     public function isInitialized(): bool
     {
-        return (bool) SystemSetting::getValue(SystemSettingKeyEnum::AppInitialized, false);
+        return $this->hasSchool();
     }
 }

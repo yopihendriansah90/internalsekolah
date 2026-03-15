@@ -2,12 +2,12 @@
 
 namespace App\Filament\Resources\TeacherProfiles\Schemas;
 
+use App\Support\Filament\AdminSection;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class TeacherProfileForm
@@ -16,7 +16,9 @@ class TeacherProfileForm
     {
         return $schema
             ->components([
-                Section::make('Identitas Guru')
+                AdminSection::make('Identitas Guru')
+                    ->description('Lengkapi profil dasar guru agar seluruh modul penugasan dan akademik sinkron.')
+                    ->icon('heroicon-o-user')
                     ->schema([
                         Select::make('user_id')
                             ->label('Akun Pengguna')
@@ -57,7 +59,9 @@ class TeacherProfileForm
                             ->maxLength(50),
                     ])
                     ->columns(2),
-                Section::make('Kontak dan Status')
+                AdminSection::make('Kontak dan Status')
+                    ->description('Simpan kontak, status kepegawaian, dan catatan operasional guru.')
+                    ->icon('heroicon-o-briefcase')
                     ->schema([
                         TextInput::make('phone')
                             ->label('Nomor Telepon')

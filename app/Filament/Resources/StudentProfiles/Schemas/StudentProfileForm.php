@@ -2,12 +2,12 @@
 
 namespace App\Filament\Resources\StudentProfiles\Schemas;
 
+use App\Support\Filament\AdminSection;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class StudentProfileForm
@@ -16,7 +16,9 @@ class StudentProfileForm
     {
         return $schema
             ->components([
-                Section::make('Identitas Siswa')
+                AdminSection::make('Identitas Siswa')
+                    ->description('Lengkapi identitas utama siswa sebagai dasar seluruh modul akademik.')
+                    ->icon('heroicon-o-identification')
                     ->schema([
                         TextInput::make('full_name')
                             ->label('Nama Lengkap')
@@ -58,7 +60,9 @@ class StudentProfileForm
                             ->maxLength(50),
                     ])
                     ->columns(2),
-                Section::make('Kontak dan Status')
+                AdminSection::make('Kontak dan Status')
+                    ->description('Simpan informasi komunikasi, wali, dan status administrasi siswa.')
+                    ->icon('heroicon-o-phone')
                     ->schema([
                         TextInput::make('phone')
                             ->label('Nomor Telepon')
