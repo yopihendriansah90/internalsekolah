@@ -3,10 +3,10 @@
 namespace App\Filament\Resources\AcademicYears\Pages;
 
 use App\Filament\Resources\AcademicYears\AcademicYearResource;
+use App\Filament\Resources\Pages\BaseEditRecord;
 use Filament\Actions\DeleteAction;
-use Filament\Resources\Pages\EditRecord;
 
-class EditAcademicYear extends EditRecord
+class EditAcademicYear extends BaseEditRecord
 {
     protected static string $resource = AcademicYearResource::class;
 

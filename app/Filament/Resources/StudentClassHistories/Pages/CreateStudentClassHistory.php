@@ -3,9 +3,9 @@
 namespace App\Filament\Resources\StudentClassHistories\Pages;
 
 use App\Filament\Resources\StudentClassHistories\StudentClassHistoryResource;
-use Filament\Resources\Pages\CreateRecord;
+use App\Filament\Resources\Pages\BaseCreateRecord;
 
-class CreateStudentClassHistory extends CreateRecord
+class CreateStudentClassHistory extends BaseCreateRecord
 {
     protected static string $resource = StudentClassHistoryResource::class;
 }

@@ -3,9 +3,9 @@
 namespace App\Filament\Resources\PpdbRegistrations\Pages;
 
 use App\Filament\Resources\PpdbRegistrations\PpdbRegistrationResource;
-use Filament\Resources\Pages\CreateRecord;
+use App\Filament\Resources\Pages\BaseCreateRecord;
 
-class CreatePpdbRegistration extends CreateRecord
+class CreatePpdbRegistration extends BaseCreateRecord
 {
     protected static string $resource = PpdbRegistrationResource::class;
 }

@@ -3,9 +3,9 @@
 namespace App\Filament\Resources\Schools\Pages;
 
 use App\Filament\Resources\Schools\SchoolResource;
-use Filament\Resources\Pages\CreateRecord;
+use App\Filament\Resources\Pages\BaseCreateRecord;
 
-class CreateSchool extends CreateRecord
+class CreateSchool extends BaseCreateRecord
 {
     protected static string $resource = SchoolResource::class;
 }

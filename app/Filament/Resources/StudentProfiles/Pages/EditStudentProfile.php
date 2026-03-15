@@ -3,10 +3,10 @@
 namespace App\Filament\Resources\StudentProfiles\Pages;
 
 use App\Filament\Resources\StudentProfiles\StudentProfileResource;
+use App\Filament\Resources\Pages\BaseEditRecord;
 use Filament\Actions\DeleteAction;
-use Filament\Resources\Pages\EditRecord;
 
-class EditStudentProfile extends EditRecord
+class EditStudentProfile extends BaseEditRecord
 {
     protected static string $resource = StudentProfileResource::class;
 

@@ -3,9 +3,9 @@
 namespace App\Filament\Resources\Majors\Pages;
 
 use App\Filament\Resources\Majors\MajorResource;
-use Filament\Resources\Pages\CreateRecord;
+use App\Filament\Resources\Pages\BaseCreateRecord;
 
-class CreateMajor extends CreateRecord
+class CreateMajor extends BaseCreateRecord
 {
     protected static string $resource = MajorResource::class;
 }

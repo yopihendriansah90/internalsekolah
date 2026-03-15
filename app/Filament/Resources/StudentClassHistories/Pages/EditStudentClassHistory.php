@@ -3,10 +3,10 @@
 namespace App\Filament\Resources\StudentClassHistories\Pages;
 
 use App\Filament\Resources\StudentClassHistories\StudentClassHistoryResource;
+use App\Filament\Resources\Pages\BaseEditRecord;
 use Filament\Actions\DeleteAction;
-use Filament\Resources\Pages\EditRecord;
 
-class EditStudentClassHistory extends EditRecord
+class EditStudentClassHistory extends BaseEditRecord
 {
     protected static string $resource = StudentClassHistoryResource::class;
 

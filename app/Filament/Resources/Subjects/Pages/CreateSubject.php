@@ -3,9 +3,9 @@
 namespace App\Filament\Resources\Subjects\Pages;
 
 use App\Filament\Resources\Subjects\SubjectResource;
-use Filament\Resources\Pages\CreateRecord;
+use App\Filament\Resources\Pages\BaseCreateRecord;
 
-class CreateSubject extends CreateRecord
+class CreateSubject extends BaseCreateRecord
 {
     protected static string $resource = SubjectResource::class;
 }

@@ -3,10 +3,10 @@
 namespace App\Filament\Resources\PpdbRegistrations\Pages;
 
 use App\Filament\Resources\PpdbRegistrations\PpdbRegistrationResource;
+use App\Filament\Resources\Pages\BaseEditRecord;
 use Filament\Actions\DeleteAction;
-use Filament\Resources\Pages\EditRecord;
 
-class EditPpdbRegistration extends EditRecord
+class EditPpdbRegistration extends BaseEditRecord
 {
     protected static string $resource = PpdbRegistrationResource::class;
 

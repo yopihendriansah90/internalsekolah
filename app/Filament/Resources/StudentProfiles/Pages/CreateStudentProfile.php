@@ -3,9 +3,9 @@
 namespace App\Filament\Resources\StudentProfiles\Pages;
 
 use App\Filament\Resources\StudentProfiles\StudentProfileResource;
-use Filament\Resources\Pages\CreateRecord;
+use App\Filament\Resources\Pages\BaseCreateRecord;
 
-class CreateStudentProfile extends CreateRecord
+class CreateStudentProfile extends BaseCreateRecord
 {
     protected static string $resource = StudentProfileResource::class;
 }

@@ -3,10 +3,10 @@
 namespace App\Filament\Resources\Positions\Pages;
 
 use App\Filament\Resources\Positions\PositionResource;
+use App\Filament\Resources\Pages\BaseEditRecord;
 use Filament\Actions\DeleteAction;
-use Filament\Resources\Pages\EditRecord;
 
-class EditPosition extends EditRecord
+class EditPosition extends BaseEditRecord
 {
     protected static string $resource = PositionResource::class;
 

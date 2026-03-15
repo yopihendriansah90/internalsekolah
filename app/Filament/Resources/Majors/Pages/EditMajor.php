@@ -3,10 +3,10 @@
 namespace App\Filament\Resources\Majors\Pages;
 
 use App\Filament\Resources\Majors\MajorResource;
+use App\Filament\Resources\Pages\BaseEditRecord;
 use Filament\Actions\DeleteAction;
-use Filament\Resources\Pages\EditRecord;
 
-class EditMajor extends EditRecord
+class EditMajor extends BaseEditRecord
 {
     protected static string $resource = MajorResource::class;
 

@@ -3,9 +3,9 @@
 namespace App\Filament\Resources\Semesters\Pages;
 
 use App\Filament\Resources\Semesters\SemesterResource;
-use Filament\Resources\Pages\CreateRecord;
+use App\Filament\Resources\Pages\BaseCreateRecord;
 
-class CreateSemester extends CreateRecord
+class CreateSemester extends BaseCreateRecord
 {
     protected static string $resource = SemesterResource::class;
 }

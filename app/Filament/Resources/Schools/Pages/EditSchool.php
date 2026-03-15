@@ -2,11 +2,11 @@
 
 namespace App\Filament\Resources\Schools\Pages;
 
+use App\Filament\Resources\Pages\BaseEditRecord;
 use App\Filament\Resources\Schools\SchoolResource;
 use Filament\Actions\DeleteAction;
-use Filament\Resources\Pages\EditRecord;
 
-class EditSchool extends EditRecord
+class EditSchool extends BaseEditRecord
 {
     protected static string $resource = SchoolResource::class;
 

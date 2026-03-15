@@ -3,10 +3,10 @@
 namespace App\Filament\Resources\AdditionalAssignments\Pages;
 
 use App\Filament\Resources\AdditionalAssignments\AdditionalAssignmentResource;
+use App\Filament\Resources\Pages\BaseEditRecord;
 use Filament\Actions\DeleteAction;
-use Filament\Resources\Pages\EditRecord;
 
-class EditAdditionalAssignment extends EditRecord
+class EditAdditionalAssignment extends BaseEditRecord
 {
     protected static string $resource = AdditionalAssignmentResource::class;
 
