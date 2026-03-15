@@ -52,4 +52,9 @@ class StudentProfileResource extends Resource
             'edit' => EditStudentProfile::route('/{record}/edit'),
         ];
     }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
 }

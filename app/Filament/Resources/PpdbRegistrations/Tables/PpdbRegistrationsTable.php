@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\PpdbRegistrations\Tables;
 
+use App\Filament\Resources\PpdbRegistrations\PpdbRegistrationResource;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -21,8 +22,11 @@ class PpdbRegistrationsTable
                 TextColumn::make('registration_number')
                     ->label('Nomor Pendaftaran')
                     ->searchable(),
-                TextColumn::make('studentProfile.full_name')
-                    ->label('Siswa')
+                TextColumn::make('full_name')
+                    ->label('Calon Siswa')
+                    ->searchable(),
+                TextColumn::make('major.short_name')
+                    ->label('Pilihan')
                     ->searchable(),
                 TextColumn::make('origin_school')
                     ->label('Asal Sekolah')
@@ -38,6 +42,8 @@ class PpdbRegistrationsTable
                     ->date('d M Y'),
             ])
             ->recordActions([
+                PpdbRegistrationResource::getAdmitStudentAction(),
+                PpdbRegistrationResource::getOpenStudentAction(),
                 EditAction::make(),
             ])
             ->toolbarActions([

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\Admissions\PpdbAdmissionService;
 use App\Services\School\AcademicLabelService;
 use App\Services\School\SchoolContextService;
 use Carbon\CarbonImmutable;
@@ -16,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(SchoolContextService::class);
         $this->app->singleton(AcademicLabelService::class);
+        $this->app->singleton(PpdbAdmissionService::class);
     }
 
     /**

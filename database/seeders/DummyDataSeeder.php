@@ -439,9 +439,22 @@ class DummyDataSeeder extends Seeder
     {
         foreach ($students as $index => $student) {
             PpdbRegistration::query()->updateOrCreate(
-                ['student_profile_id' => $student->id],
+                ['registration_number' => $student->registration_number],
                 [
+                    'student_profile_id' => $student->id,
+                    'major_id' => $student->major_id,
                     'registration_number' => $student->registration_number,
+                    'full_name' => $student->full_name,
+                    'nisn' => $student->nisn,
+                    'birth_place' => $student->birth_place,
+                    'birth_date' => $student->birth_date,
+                    'gender' => $student->gender,
+                    'religion' => $student->religion,
+                    'phone' => $student->phone,
+                    'email' => $student->email,
+                    'address' => $student->address,
+                    'guardian_name' => $student->guardian_name,
+                    'guardian_phone' => $student->guardian_phone,
                     'registration_date' => now()->subMonths(10)->addDays($index)->toDateString(),
                     'origin_school' => 'SMP Dummy '.($index + 1),
                     'entry_path' => $index % 2 === 0 ? 'reguler' : 'prestasi',

@@ -19,21 +19,27 @@ class PpdbRegistrationForm
                     ->description('Masukkan identitas pendaftaran dan jalur seleksi calon siswa.')
                     ->icon('heroicon-o-document-check')
                     ->schema([
-                        Select::make('student_profile_id')
-                            ->label('Siswa')
-                            ->relationship('studentProfile', 'full_name')
+                        TextInput::make('full_name')
+                            ->label('Nama Lengkap')
                             ->required()
-                            ->searchable()
-                            ->preload(),
+                            ->maxLength(255),
                         TextInput::make('registration_number')
                             ->label('Nomor Pendaftaran')
                             ->required()
                             ->maxLength(100),
+                        TextInput::make('nisn')
+                            ->label('NISN')
+                            ->maxLength(50),
                         DatePicker::make('registration_date')
                             ->label('Tanggal Pendaftaran')
                             ->native(false),
                         TextInput::make('origin_school')
                             ->label('Asal Sekolah'),
+                        Select::make('major_id')
+                            ->label('Pilihan Struktur Akademik')
+                            ->relationship('major', 'name')
+                            ->searchable()
+                            ->preload(),
                         Select::make('entry_path')
                             ->label('Jalur Masuk')
                             ->options([
@@ -43,6 +49,52 @@ class PpdbRegistrationForm
                                 'reguler' => 'Reguler',
                             ])
                             ->native(false),
+                    ])
+                    ->columns(2),
+                AdminSection::make('Identitas Calon Siswa')
+                    ->description('Simpan data calon siswa sejak proses pendaftaran berlangsung.')
+                    ->icon('heroicon-o-identification')
+                    ->schema([
+                        TextInput::make('birth_place')
+                            ->label('Tempat Lahir')
+                            ->maxLength(100),
+                        DatePicker::make('birth_date')
+                            ->label('Tanggal Lahir')
+                            ->native(false),
+                        Select::make('gender')
+                            ->label('Jenis Kelamin')
+                            ->options([
+                                'L' => 'Laki-laki',
+                                'P' => 'Perempuan',
+                            ])
+                            ->native(false),
+                        TextInput::make('religion')
+                            ->label('Agama')
+                            ->maxLength(50),
+                    ])
+                    ->columns(2),
+                AdminSection::make('Kontak dan Wali')
+                    ->description('Informasi ini dipakai saat proses verifikasi hingga siswa resmi diterima.')
+                    ->icon('heroicon-o-phone')
+                    ->schema([
+                        TextInput::make('phone')
+                            ->label('Nomor Telepon')
+                            ->tel()
+                            ->maxLength(50),
+                        TextInput::make('email')
+                            ->label('Email')
+                            ->email(),
+                        Textarea::make('address')
+                            ->label('Alamat')
+                            ->rows(3)
+                            ->columnSpanFull(),
+                        TextInput::make('guardian_name')
+                            ->label('Nama Wali')
+                            ->maxLength(255),
+                        TextInput::make('guardian_phone')
+                            ->label('Telepon Wali')
+                            ->tel()
+                            ->maxLength(50),
                     ])
                     ->columns(2),
                 AdminSection::make('Verifikasi dan Keputusan')
@@ -59,7 +111,8 @@ class PpdbRegistrationForm
                             ])
                             ->native(false)
                             ->default('terdaftar')
-                            ->required(),
+                            ->required()
+                            ->helperText('Gunakan aksi penerimaan untuk membuat data siswa resmi saat status menjadi diterima.'),
                         DatePicker::make('documents_verified_at')
                             ->label('Tanggal Verifikasi Dokumen')
                             ->native(false),

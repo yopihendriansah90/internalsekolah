@@ -12,7 +12,19 @@ class PpdbRegistration extends Model
 
     protected $fillable = [
         'student_profile_id',
+        'major_id',
         'registration_number',
+        'full_name',
+        'nisn',
+        'birth_place',
+        'birth_date',
+        'gender',
+        'religion',
+        'phone',
+        'email',
+        'address',
+        'guardian_name',
+        'guardian_phone',
         'registration_date',
         'origin_school',
         'entry_path',
@@ -24,6 +36,7 @@ class PpdbRegistration extends Model
     protected function casts(): array
     {
         return [
+            'birth_date' => 'date',
             'registration_date' => 'date',
             'documents_verified_at' => 'datetime',
         ];
@@ -32,5 +45,10 @@ class PpdbRegistration extends Model
     public function studentProfile(): BelongsTo
     {
         return $this->belongsTo(StudentProfile::class);
+    }
+
+    public function major(): BelongsTo
+    {
+        return $this->belongsTo(Major::class)->withDefault();
     }
 }
