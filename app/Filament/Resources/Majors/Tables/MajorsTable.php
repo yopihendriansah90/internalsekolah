@@ -28,6 +28,19 @@ class MajorsTable
                 TextColumn::make('short_name')
                     ->label('Singkatan')
                     ->searchable(),
+                TextColumn::make('education_level')
+                    ->label('Jenjang')
+                    ->badge()
+                    ->color(fn (string $state): string => $state === 'SMK' ? 'warning' : 'info'),
+                TextColumn::make('major_type')
+                    ->label('Tipe')
+                    ->badge()
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'jurusan' => 'Jurusan',
+                        'peminatan' => 'Peminatan',
+                        'umum' => 'Umum',
+                        default => $state,
+                    }),
                 TextColumn::make('department_group')
                     ->label('Kelompok')
                     ->searchable(),

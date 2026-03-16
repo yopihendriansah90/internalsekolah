@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    'edu_sync' => [
+        'url' => env('EDU_SYNC_URL'),
+        'api_key' => env('EDU_SYNC_API_KEY'),
+        'shared_secret' => env('EDU_SYNC_SHARED_SECRET'),
+        'source_system' => env('EDU_SYNC_SOURCE_SYSTEM', 'internal'),
+    ],
+
 ];

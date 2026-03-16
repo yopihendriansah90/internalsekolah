@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('Sistem Informasi Sekolah')
+            ->brandName('EDUSYNC OS')
             ->colors([
                 'primary' => Color::Blue,
             ])
