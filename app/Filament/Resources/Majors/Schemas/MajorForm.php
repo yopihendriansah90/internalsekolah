@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Majors\Schemas;
 
 use App\Support\Filament\AdminSection;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
@@ -26,6 +27,23 @@ class MajorForm
                             ->required(),
                         TextInput::make('short_name')
                             ->label('Nama Singkat'),
+                        Select::make('education_level')
+                            ->label('Jenjang')
+                            ->options([
+                                'SMA' => 'SMA',
+                                'SMK' => 'SMK',
+                            ])
+                            ->default('SMA')
+                            ->required(),
+                        Select::make('major_type')
+                            ->label('Tipe Struktur')
+                            ->options([
+                                'jurusan' => 'Jurusan',
+                                'peminatan' => 'Peminatan',
+                                'umum' => 'Umum',
+                            ])
+                            ->default('jurusan')
+                            ->required(),
                         TextInput::make('department_group')
                             ->label('Kelompok'),
                     ])

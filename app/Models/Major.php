@@ -14,6 +14,8 @@ class Major extends Model
         'name',
         'code',
         'short_name',
+        'education_level',
+        'major_type',
         'department_group',
         'description',
         'is_active',

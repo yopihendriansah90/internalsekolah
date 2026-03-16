@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Sistem Informasi Sekolah'),
+    'name' => env('APP_NAME', 'EDUSYNC OS'),
 
     /*
     |--------------------------------------------------------------------------
