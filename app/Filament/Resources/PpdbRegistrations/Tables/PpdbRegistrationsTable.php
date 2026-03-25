@@ -2,7 +2,9 @@
 
 namespace App\Filament\Resources\PpdbRegistrations\Tables;
 
+use App\Filament\Exports\PpdbRegistrationExporter;
 use App\Filament\Resources\PpdbRegistrations\PpdbRegistrationResource;
+use App\Support\Filament\ExportActionFactory;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -47,6 +49,7 @@ class PpdbRegistrationsTable
                 EditAction::make(),
             ])
             ->toolbarActions([
+                ExportActionFactory::make(PpdbRegistrationExporter::class, 'ppdb'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

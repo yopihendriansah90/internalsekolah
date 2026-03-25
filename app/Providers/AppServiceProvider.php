@@ -11,6 +11,9 @@ use App\Models\StudentProfile;
 use App\Models\Subject;
 use App\Models\TeacherProfile;
 use App\Models\TeachingAssignment;
+use App\Services\Letter\LetterPdfService;
+use App\Services\Letter\LetterPlaceholderService;
+use App\Services\Letter\LetterTemplateRenderService;
 use App\Observers\AcademicYearObserver;
 use App\Observers\ClassroomObserver;
 use App\Observers\MajorObserver;
@@ -40,6 +43,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(SchoolContextService::class);
         $this->app->singleton(AcademicLabelService::class);
         $this->app->singleton(PpdbAdmissionService::class);
+        $this->app->singleton(LetterPlaceholderService::class);
+        $this->app->singleton(LetterTemplateRenderService::class);
+        $this->app->singleton(LetterPdfService::class);
         $this->app->singleton(MasterDataSyncPayloadFactory::class);
         $this->app->singleton(MasterDataSyncService::class);
     }

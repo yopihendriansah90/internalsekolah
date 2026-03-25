@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\TeachingAssignments\Tables;
 
+use App\Filament\Exports\TeachingAssignmentExporter;
+use App\Support\Filament\ExportActionFactory;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -44,6 +46,7 @@ class TeachingAssignmentsTable
                 EditAction::make(),
             ])
             ->toolbarActions([
+                ExportActionFactory::make(TeachingAssignmentExporter::class, 'penugasan-mengajar'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

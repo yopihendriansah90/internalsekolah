@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Positions\Tables;
 
+use App\Filament\Exports\PositionExporter;
+use App\Support\Filament\ExportActionFactory;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -45,6 +47,7 @@ class PositionsTable
                 EditAction::make(),
             ])
             ->toolbarActions([
+                ExportActionFactory::make(PositionExporter::class, 'jabatan'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

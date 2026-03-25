@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Majors\Tables;
 
+use App\Filament\Exports\MajorExporter;
+use App\Support\Filament\ExportActionFactory;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -65,6 +67,7 @@ class MajorsTable
                 EditAction::make(),
             ])
             ->toolbarActions([
+                ExportActionFactory::make(MajorExporter::class, 'struktur-akademik'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

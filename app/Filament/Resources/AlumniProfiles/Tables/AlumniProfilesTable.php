@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\AlumniProfiles\Tables;
 
+use App\Filament\Exports\AlumniProfileExporter;
+use App\Support\Filament\ExportActionFactory;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -35,6 +37,7 @@ class AlumniProfilesTable
                 EditAction::make(),
             ])
             ->toolbarActions([
+                ExportActionFactory::make(AlumniProfileExporter::class, 'alumni'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

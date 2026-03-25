@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Schools\Tables;
 
+use App\Filament\Exports\SchoolExporter;
+use App\Support\Filament\ExportActionFactory;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -61,6 +63,7 @@ class SchoolsTable
                 EditAction::make(),
             ])
             ->toolbarActions([
+                ExportActionFactory::make(SchoolExporter::class, 'master-sekolah'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

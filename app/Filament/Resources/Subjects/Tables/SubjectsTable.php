@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Subjects\Tables;
 
+use App\Filament\Exports\SubjectExporter;
+use App\Support\Filament\ExportActionFactory;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -60,6 +62,7 @@ class SubjectsTable
                 EditAction::make(),
             ])
             ->toolbarActions([
+                ExportActionFactory::make(SubjectExporter::class, 'mata-pelajaran'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

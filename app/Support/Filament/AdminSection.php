@@ -12,7 +12,6 @@ class AdminSection extends Section
 
         $this
             ->iconColor('primary')
-            ->aside()
             ->compact()
             ->columnSpanFull();
     }

@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\StudentProfiles\Tables;
 
+use App\Filament\Exports\StudentProfileExporter;
+use App\Support\Filament\ExportActionFactory;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -46,6 +48,7 @@ class StudentProfilesTable
                 EditAction::make(),
             ])
             ->toolbarActions([
+                ExportActionFactory::make(StudentProfileExporter::class, 'data-siswa'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

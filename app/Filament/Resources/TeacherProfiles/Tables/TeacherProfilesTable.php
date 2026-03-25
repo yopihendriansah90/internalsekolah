@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\TeacherProfiles\Tables;
 
+use App\Filament\Exports\TeacherProfileExporter;
+use App\Support\Filament\ExportActionFactory;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -54,6 +56,7 @@ class TeacherProfilesTable
                 EditAction::make(),
             ])
             ->toolbarActions([
+                ExportActionFactory::make(TeacherProfileExporter::class, 'data-guru'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

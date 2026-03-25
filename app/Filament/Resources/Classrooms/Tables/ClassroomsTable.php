@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Classrooms\Tables;
 
+use App\Filament\Exports\ClassroomExporter;
+use App\Support\Filament\ExportActionFactory;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -46,6 +48,7 @@ class ClassroomsTable
                 EditAction::make(),
             ])
             ->toolbarActions([
+                ExportActionFactory::make(ClassroomExporter::class, 'kelas-rombel'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

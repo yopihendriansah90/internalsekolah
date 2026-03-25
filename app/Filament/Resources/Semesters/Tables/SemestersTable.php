@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Semesters\Tables;
 
+use App\Filament\Exports\SemesterExporter;
+use App\Support\Filament\ExportActionFactory;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -49,6 +51,7 @@ class SemestersTable
                 EditAction::make(),
             ])
             ->toolbarActions([
+                ExportActionFactory::make(SemesterExporter::class, 'semester'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

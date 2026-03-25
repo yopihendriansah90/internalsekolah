@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\AcademicYears\Tables;
 
+use App\Filament\Exports\AcademicYearExporter;
+use App\Support\Filament\ExportActionFactory;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -51,6 +53,7 @@ class AcademicYearsTable
                 EditAction::make(),
             ])
             ->toolbarActions([
+                ExportActionFactory::make(AcademicYearExporter::class, 'tahun-ajaran'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
