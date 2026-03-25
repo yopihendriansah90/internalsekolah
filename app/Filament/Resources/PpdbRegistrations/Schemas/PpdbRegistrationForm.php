@@ -24,14 +24,17 @@ class PpdbRegistrationForm
                             ->required()
                             ->maxLength(255),
                         TextInput::make('registration_number')
-                            ->label('Nomor Pendaftaran')
-                            ->required()
-                            ->maxLength(100),
+                            ->label('Nomor Pendaftaran (Otomatis)')
+                            ->placeholder('Akan dibuat otomatis saat data disimpan')
+                            ->helperText('Nomor pendaftaran dibuat otomatis oleh sistem saat proses simpan.')
+                            ->disabled()
+                            ->dehydrated(false),
                         TextInput::make('nisn')
                             ->label('NISN')
                             ->maxLength(50),
                         DatePicker::make('registration_date')
                             ->label('Tanggal Pendaftaran')
+                            ->default(now())
                             ->native(false),
                         TextInput::make('origin_school')
                             ->label('Asal Sekolah'),
@@ -106,13 +109,12 @@ class PpdbRegistrationForm
                             ->options([
                                 'terdaftar' => 'Terdaftar',
                                 'terverifikasi' => 'Terverifikasi',
-                                'diterima' => 'Diterima',
                                 'ditolak' => 'Ditolak',
                             ])
                             ->native(false)
                             ->default('terdaftar')
                             ->required()
-                            ->helperText('Gunakan aksi penerimaan untuk membuat data siswa resmi saat status menjadi diterima.'),
+                            ->helperText('Status "Diterima" ditetapkan otomatis melalui aksi "Terima Sebagai Siswa".'),
                         DatePicker::make('documents_verified_at')
                             ->label('Tanggal Verifikasi Dokumen')
                             ->native(false),

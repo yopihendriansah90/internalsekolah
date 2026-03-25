@@ -11,7 +11,6 @@ use Filament\Actions\DeleteAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Illuminate\Validation\ValidationException;
 
 class EditPpdbRegistration extends BaseEditRecord
 {
@@ -64,10 +63,9 @@ class EditPpdbRegistration extends BaseEditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        if (($data['status'] ?? null) === 'diterima' && blank($this->getRecord()->student_profile_id)) {
-            throw ValidationException::withMessages([
-                'data.status' => 'Gunakan aksi "Terima Sebagai Siswa" agar data siswa resmi terbentuk.',
-            ]);
+        if (($this->getRecord()->status ?? null) === 'diterima') {
+            $data['status'] = 'diterima';
+            $data['student_profile_id'] = $this->getRecord()->student_profile_id;
         }
 
         return $data;
